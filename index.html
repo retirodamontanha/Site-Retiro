@@ -48,14 +48,36 @@
     box-shadow: 0 1px 0 var(--border);
   }
   .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--cream);
-    text-decoration: none;
-    transition: color 0.4s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+.logo-desktop {
+  display: none;
+  height: 28px;
+  width: auto;
+  transition: filter 0.4s; /* Faz a mudança de cor acompanhar o resto do menu suavemente */
+}
+
+/* Mostra o logo apenas no computador */
+@media (min-width: 768px) {
+  .logo-desktop {
+    display: block;
   }
+}
+
+/* Quando dás scroll, aplica uma fórmula à imagem branca para a transformar na tua cor verde escura (#2C3B2D) */
+nav.scrolled .logo-desktop {
+  filter: brightness(0) invert(19%) sepia(17%) saturate(1012%) hue-rotate(74deg) brightness(97%) contrast(90%);
+}
   nav.scrolled .nav-logo { color: var(--forest); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
@@ -589,19 +611,22 @@
 </head>
 <body>
 
-<nav id="nav">
-  <a href="Logo AI.png" class="nav-logo">Retiro Da Montanha</a>
-  <ul class="nav-links">
-    <li><a href="#sobre">A Casa</a></li>
-    <li><a href="#comodidades">Comodidades</a></li>
-    <li><a href="#localizacao">Localização</a></li>
-    <li><a href="#avaliacoes">Avaliações</a></li>
-  </ul>
-  <a href="https://wa.me/351910017112" target="_blank" class="nav-cta">Reservar</a>
-  <button class="nav-hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      <img src="Logo AI.png" class="logo-desktop" alt="Logo">
+      Retiro Da Montanha
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sobre">A Casa</a></li>
+      <li><a href="#comodidades">Comodidades</a></li>
+      <li><a href="#localizacao">Localização</a></li>
+      <li><a href="#avaliacoes">Avaliações</a></li>
+    </ul>
+    <a href="https://wa.me/351910017112" target="_blank" class="nav-cta">Reservar</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
